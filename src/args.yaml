@@ -1,0 +1,12 @@
+name: rust-editor
+version: "0.1"
+about: A simple text editor built in rust
+author: Nicholas Dujay <nickdujay@gmail.com>
+
+settings:
+  - ArgRequiredElseHelp
+
+args:
+  - filename:
+      help: the file to edit
+      index: 1
