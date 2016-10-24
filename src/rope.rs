@@ -48,24 +48,26 @@ impl RopeNode {
         }
     }
 
+    // TODO
     // return two ropes, split at character i
     pub fn split(&self, i: usize) -> (RopeNode, RopeNode) {
         // find the node at character i
-        let node = self.find_node(i);
-
+        // let node = self.find_node(i);
+        //
         // if i is not at the end of the string
-        let new_node = if i < node.contents.unwrap().length() {
-            // split it into a new node with two children
-            let contents = node.contents.unwrap();
-            let (contents_left,contents_right) = contents.split_at(i);
+        // let new_node = if i < node.contents.unwrap().length() {
+        // split it into a new node with two children
+        // let contents = node.contents.unwrap();
+        // let (contents_left,contents_right) = contents.split_at(i);
+        //
+        // let left_node = RopeNode::new(String::from(contents_left));
+        // let right_node = RopeNode::new(String::from(contents_right));
+        // RopeNode::concat(left_node,right_node);
+        // } else {
+        // else just use the node
+        // node
+        // };
 
-            let left_node = RopeNode::new(String::from(contents_left));
-            let right_node = RopeNode::new(String::from(contents_right));
-            RopeNode::concat(left_node,right_node);
-        } else {
-            // else just use the node
-            node
-        }
 
         // remove any right links to subtrees covering characters past position i
         // subtracting their weights from the parent nodes
@@ -75,7 +77,7 @@ impl RopeNode {
         (RopeNode::new(String::from("")), RopeNode::new(String::from("")))
     }
 
-    // immutable, return a new value
+    // insert a new string into the rope at index i
     pub fn insert(&self, i: usize, rope: RopeNode) -> RopeNode {
         let (before, after) = self.split(i);
         let before_concat = RopeNode::concat(before, rope);
@@ -99,6 +101,8 @@ impl RopeNode {
     pub fn length(&self) -> usize {
         self.weight
     }
+
+    // TODO balance the rope
 }
 
 #[test]
@@ -117,7 +121,7 @@ pub fn test_concat() {
     let left = RopeNode::new(String::from("left"));
     let right = RopeNode::new(String::from("right"));
 
-    let concat = RopeNode::concat(left,right);
+    let concat = RopeNode::concat(left, right);
 
     // test that size was updated correctly
     assert!(concat.length() == 9);
