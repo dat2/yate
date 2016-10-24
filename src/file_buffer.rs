@@ -9,7 +9,7 @@ use notify::{RecommendedWatcher, Watcher};
 use std::sync::mpsc::channel;
 
 // eventually use ropes :)
-use rope::RopeNode;
+// use rope::RopeNode;
 
 // the main file buffer
 #[derive(Debug)]

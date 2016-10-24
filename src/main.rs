@@ -18,7 +18,7 @@ fn main() {
     if let Some(filename) = m.value_of("filename") {
         // read the files
         match FileBuffer::new(String::from(filename)) {
-            Ok(mut buffer) => {
+            Ok(buffer) => {
                 let mut editor = Editor::new(buffer);
                 editor.start();
             }
